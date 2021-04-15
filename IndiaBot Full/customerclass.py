@@ -25,7 +25,6 @@ class Customer:
         self.__engine.say(words, self.waiter.getName())
         self.__engine.runAndWait()
     
-    
     def askGuestName(self):
         name = self.waiter.listen("Please enter your name: ")
         name = self.getGuestName(name)      
@@ -60,6 +59,4 @@ class Customer:
                 if confidence >= 60 and match == "Yes":
                     break 
         return custName
-    
-    
     

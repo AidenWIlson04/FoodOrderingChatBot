@@ -60,8 +60,6 @@ class Orders:
             self.waiter.say(f"These are all the stored previous orders for {custName}")
             print()
 
-
-
     def displayOrders(self, custName):
         print("Order History")
         if self.__orders:
@@ -155,8 +153,7 @@ class Orders:
             self.waiter.say("You have chosen to abandon your order. Thank you for dining with us.")
             exit()
         self.insertOrder(custName, choices)
-               
-               
+        print()        
     
     def checkMeal(self, choice, menu, course): 
         total = 0 
@@ -164,8 +161,3 @@ class Orders:
             if choice in list(self.menu.returnMenu()[course].keys()): 
                 total += choice[course][choice] 
             else: pass        
-        
-            
-                
-            
-            
