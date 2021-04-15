@@ -21,48 +21,56 @@ class Chatbot:
         self.Waiter.initVoice()          
         self.Waiter.say(f"Hello, Welcome to {name}, the best curry house in all the lands.")
         custName = self.Customer.customerNameMain()
+        self.Orders.welcomeCustomer(custName)
         self.__custName = custName
         self.chatbotMain()
                  
     def chatbotMain(self):
-        action = self.Waiter.listen("What do you want to do, see the menu, see previous orders, order food or exit?: ")
-        validAction = ["menu", "previous", "order", "exit"]
-        match, confidence = process.extractOne(action, validAction)
-        while True: 
-            if confidence < 80:
-                self.Waiter.say("I'm sorry, I don't quite understand, Please try again.")
-                action = self.Waiter.listen("What do you want to do, see the menu, see previous orders, order food or exit?: ")
-                validAction = ["menu", "previous", "order", "exit"]
-                match, confidence = process.extractOne(action, validAction)
-            break 
-        if confidence >= 80 and match == "menu":
-            while True:
-                menuPart = self.Waiter.listen("Do you want to see the starter's, main's, dessert's, sides, the whole menu see previous orders or order?: ")
-                validMenuPart = ["starter", "main", "dessert", "side", "whole", "previous", "order"]
-                match, confidence = process.extractOne(menuPart, validMenuPart)
-                if confidence >= 80 and match =="starter":  
-                    self.Waiter.printStarters()
-                elif confidence >= 80 and match =="main":
-                    self.Waiter.printMain()
-                elif confidence >= 80 and match =="dessert":
-                    self.Waiter.printDessert()
-                elif confidence >= 80 and match =="side":
-                    self.Waiter.printSide()
-                elif confidence >= 80 and match == "whole":
-                    self.Waiter.printMenu() 
-                elif confidence >= 80 and match == "previous" or "order":
-                    break
-        if confidence >= 80 and match == "previous":
-            self.Orders.getOrdersFromFile()
-            self.Orders.displayOrdersForCust(self.__custName)
-        if confidence >= 80 and match == "order":
-            self.Waiter.printMenu()
-            self.Waiter.say("Here is the menu to help with your order. Please order at least three dishes. Once you have finished your order simply type 'finish'.")
-            self.Orders.getOrderFromCustomer(self.__custName)
-            self.Orders.storeOrdersToFile()
-        if confidence >= 80 and match == "exit":
-            self.Waiter.say("Thank you for dining with us.")
-            exit()
+        while True:
+            self.Waiter.say("What would you like to do? You can,")
+            actionShownToCust = ["See the menu.", "See your previous orders.", "Order some food.", "Or exit"]
+            for option in actionShownToCust:
+                self.Waiter.say(f"> {option}")
+            validAction = ["menu", "previous", "order", "exit"]
+            action = self.Waiter.listen("What do you want to do? ")
+            match, confidence = process.extractOne(action, validAction)
+            while True: 
+                if confidence < 60:
+                    self.Waiter.say("I'm sorry, I don't quite understand, Please try again.")
+                    action = self.Waiter.listen("What do you want to do, see the menu, see previous orders, order food or exit?: ")
+                    validAction = ["menu", "previous", "order", "exit"]
+                    match, confidence = process.extractOne(action, validAction)
+                break 
+            if confidence >= 60 and match == "menu":
+                while True:
+                    menuPart = self.Waiter.listen("Do you want to see the starter's, main's, dessert's, sides, the whole menu see previous orders or order?: ")
+                    validMenuPart = ["starter", "main", "dessert", "side", "whole", "previous", "order"]
+                    match, confidence = process.extractOne(menuPart, validMenuPart)
+                    if confidence >= 80 and match =="starter":  
+                        self.Waiter.printStarters()
+                    elif confidence >= 80 and match =="main":
+                        self.Waiter.printMain()
+                    elif confidence >= 80 and match =="dessert":
+                        self.Waiter.printDessert()
+                    elif confidence >= 80 and match =="side":
+                        self.Waiter.printSide()
+                    elif confidence >= 80 and match == "whole":
+                        self.Waiter.printMenu() 
+                    elif confidence >= 80 and match == "previous" or "order":
+                        break
+            if confidence >= 60 and match == "previous":
+                self.Orders.getOrdersFromFile()
+                self.Orders.displayOrdersForCust(self.__custName) 
+                continue              
+            if confidence >= 60 and match == "order":
+                self.Waiter.say("Here is the menu to help with your order. Please order at least three dishes. Once you have finished your order simply type 'finish'.")
+                self.Waiter.say("The part of the menu corresponding to the course you chose will be shown to you.")
+                self.Orders.getOrderFromCustomer(self.__custName)
+                self.Orders.storeOrdersToFile()
+                continue
+            if confidence >= 60 and match == "exit":
+                self.Waiter.say("Thank you for dining with us. Come again soon!")
+                exit()
 def main():
     Chatbot() 
     

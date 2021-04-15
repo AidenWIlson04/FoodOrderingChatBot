@@ -11,8 +11,7 @@ class Customer:
     def __init__(self):
         self.__engine = pyttsx3.init()
         self.waiter = Waiter()
-        
-    
+         
     def listen(self, prompt="I am listening, please speak:"):
         words = input(prompt)
         return words
@@ -49,7 +48,7 @@ class Customer:
     def customerNameMain(self):
         custName = self.askGuestName()  
         yesNo = ['Yes', 'No']        
-        isName = self.waiter.listen(f"So your name is {custName}?: ")
+        isName = self.waiter.listen(f"Your name is {custName}, is this correct?: ")
         match, confidence = process.extractOne(isName, yesNo) 
         if confidence >= 60 and match == "Yes":
             pass
@@ -60,7 +59,6 @@ class Customer:
                 match, confidence = process.extractOne(said, yesNo) 
                 if confidence >= 60 and match == "Yes":
                     break 
-        self.say(f"Welcome to our restaurant {custName}")
         return custName
     
     

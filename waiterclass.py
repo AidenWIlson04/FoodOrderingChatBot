@@ -16,7 +16,7 @@ class Waiter:
         self.__voice = self.__voices[self.__vix].id
         self.__engine.setProperty('voice', self.__voice)
 
-        self.__engine.setProperty('rate', 3000)
+        self.__engine.setProperty('rate', 200)
 
         self.__engine.setProperty('volume', 1.0)
 
