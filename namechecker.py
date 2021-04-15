@@ -1,9 +1,9 @@
 import spacy
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("en_core_web_md")
 
 def getName(speech):
         name = []
-        doc = self.__nlp(speech.title()+" And")
+        doc = nlp(speech.title()+" And")
 
         # Parts of Speech (POS) Tagging
         for token in doc:

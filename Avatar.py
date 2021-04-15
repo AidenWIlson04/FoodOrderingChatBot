@@ -14,7 +14,7 @@ class Waiter:
 
 ##        ''' Set Voice '''
         self.__voices = self.__engine.getProperty('voices')
-        self.__vix = 0  # Male, 1 Female
+        self.__vix = 1  # Male, 1 Female
         self.__voice = self.__voices[self.__vix].id
         self.__engine.setProperty('voice', self.__voice)
 
