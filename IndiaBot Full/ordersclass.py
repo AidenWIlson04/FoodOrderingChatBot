@@ -146,7 +146,7 @@ class Orders:
         for meal in choices:
             self.waiter.say(f">{meal} which costs ${int(self.menu.getPrice(meal))}.")
         self.waiter.say(f"Your order comes to a total of {orderTotalShown} dollars.")
-        orderConfirmation = self.waiter.listenFuzzy("Are you sure you want to continue with your order? ", listValue=["yes", "no"])
+        orderConfirmation = self.waiter.listenFuzzy("Are you sure you want to confirm and pay for your order? ", listValue=["yes", "no"])
         if orderConfirmation[0] == "yes" and orderConfirmation[1] >= 60:
             pass
         else:
