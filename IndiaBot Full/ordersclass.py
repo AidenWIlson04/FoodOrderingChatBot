@@ -102,7 +102,7 @@ class Orders:
                     continue
             if course[1] < 60:
                 self.waiter.say("Im sorry, I don't quite understand please enter your course again.")
-            if course[0] == "Starter" and course[1] >= 80:
+            if course[0] == "Starter" and course[1] >= 60:
                 self.waiter.printStarters()
                 choice = self.waiter.listenFuzzy(f"{custName.title()}, what would you like to order from the starters?: ", listValue=["Garlic Naan", "Cheesy Garlic Naan", "Cheesy Mince Garlic Naan"])
                 if choice[1] < 60: 
