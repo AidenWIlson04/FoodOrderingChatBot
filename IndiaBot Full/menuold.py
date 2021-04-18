@@ -3,7 +3,7 @@ import json
 class menu:
     
     def __init__(self):
-        self.jsonMenu = self.returnMenu()["menu"]
+        self.jsonMenu = self.returnMenu()#["menu"]
     
     def getPrice(self, choice):
         mealPrice = []
