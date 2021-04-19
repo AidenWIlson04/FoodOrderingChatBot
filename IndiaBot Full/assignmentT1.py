@@ -63,7 +63,7 @@ class Chatbot:
                 self.Orders.displayOrdersForCust(self.__custName) 
                 continue              
             if confidence >= 60 and match == "order":
-                self.Waiter.say("Here is the menu to help with your order. Please order at least three dishes. Once you have finished your order simply type 'finish'.")
+                self.Waiter.say("Please order at least three dishes. Once you have finished your order simply type 'finish'.")
                 self.Waiter.say("The part of the menu corresponding to the course you chose will be shown to you.")
                 self.Orders.getOrderFromCustomer(self.__custName)
                 self.Orders.storeOrdersToFile()

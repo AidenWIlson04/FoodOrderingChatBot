@@ -1,0 +1,27 @@
+{
+"menu" : {
+    "Starter" :
+        {
+            "Garlic Naan" : 3.00,
+            "Cheesy Garlic Naan" : 4.00,
+            "Cheesy Mince Garlic Naan" : 8.00
+        },
+    "Main" :
+        {
+            "Butter Chicken" : 17.00,
+            "Beef Vindalu" : 20.00,
+            "Roganjosh" : 20.00
+        },
+    "Dessert" :
+        {
+            "Gulab Jamun" : 4.00,
+            "Jalebi" : 4.00
+        },
+    "Side" :
+        {
+            "Rice" : 3.00,
+            "Papadams" : 1.00
+            
+        }
+    }
+}

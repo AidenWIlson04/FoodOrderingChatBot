@@ -26,7 +26,7 @@ class Customer:
         self.__engine.runAndWait()
     
     def askGuestName(self):
-        name = self.waiter.listen("Please enter your name: ")
+        name = self.waiter.listen("Please enter your name so that I can see if you have dined here before: ")
         name = self.getGuestName(name)      
         return name
 

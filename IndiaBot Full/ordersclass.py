@@ -33,8 +33,8 @@ class Orders:
     def displayOrdersForCust(self, custName):
         if custName not in self.__orders:
             self.waiter.say(f"{custName} it appears you are a new customer and have no previous orders, please start an order.")
-            self.Waiter.say("Here is the menu to help with your order. Please order at least three dishes. Once you have finished your order simply type 'finish'.")
-            self.Waiter.say("The part of the menu corresponding to the course you chose will be shown to you.")
+            self.waiter.say("Please order at least three dishes. Once you have finished your order simply type 'finish'.")
+            self.waiter.say("The part of the menu corresponding to the course you chose will be shown to you.")
             self.getOrderFromCustomer(custName)
             self.storeOrdersToFile()
         else:
