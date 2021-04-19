@@ -54,7 +54,7 @@ class Customer:
         else:
             while True:
                 custName = self.repeatName()
-                said = self.listen(f"Is {custName} your name?: ")
+                said = self.waiter.listen(f"Is {custName} your name?: ")
                 match, confidence = process.extractOne(said, yesNo) 
                 if confidence >= 60 and match == "Yes":
                     break 
